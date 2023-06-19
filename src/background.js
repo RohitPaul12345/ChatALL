@@ -32,8 +32,8 @@ async function createWindow() {
 
   mainWindow = win;
 
-  // Force the SameSite attribute to None for all cookies
-  // This is required for the cross-origin request to work
+  /* Force the SameSite attribute to None for all cookies
+   This is required for the cross-origin request to work */
   win.webContents.session.cookies.on(
     "changed",
     async (event, cookie, cause, removed) => {
@@ -57,8 +57,8 @@ async function createWindow() {
             secure: true, // Must be true for cross-origin cookies
             sameSite: "no_restriction",
           };
-          // If the domain starts with a dot, set the domain as is.
-          // Otherwise, Electron will use the url domain without the first dot as default.
+          /* If the domain starts with a dot, set the domain as is.
+           Otherwise, Electron will use the url domain without the first dot as default. */
           if (cookie.domain.startsWith(".")) {
             newCookie.domain = cookie.domain;
           }
